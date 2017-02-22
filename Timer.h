@@ -8,19 +8,19 @@
 #include <chrono>
 
 using Action	= std::function<void(void*)>;
-using Nano		= std::chrono::nanoseconds;
-using Mill		= std::chrono::milliseconds;
-using Clock		= std::chrono::high_resolution_clock;
+using Nano	= std::chrono::nanoseconds;
+using Mill	= std::chrono::milliseconds;
+using Clock	= std::chrono::high_resolution_clock;
 using Duration	= std::chrono::duration<long long, std::milli>;
 using TimePoint = std::chrono::time_point<std::chrono::high_resolution_clock>;
 typedef struct _TTimerDefiner
 {
-	unsigned int				id			{ 0 };
-	Duration					interval;
-	TimePoint					intervalKey;
-	Action						action		{ nullptr };
-	void*						params		{ nullptr };
-	bool						onlyOnce	{ false };
+	unsigned int	id		{ 0 };
+	Duration	interval;
+	TimePoint	intervalKey;
+	Action		action		{ nullptr };
+	void*		params		{ nullptr };
+	bool		onlyOnce	{ false };
 }TimerDefine;
 
 class Timer final
@@ -38,7 +38,7 @@ public:
 	void After(const unsigned int& id, const unsigned int& interval, Action action, void* params = nullptr);
 	void Tick();
 private:
-	TimerMap*		timerMap_	{ nullptr };
-	DeleteList*		delList_	{ nullptr };
+	TimerMap*	timerMap_	{ nullptr };
+	DeleteList*	delList_	{ nullptr };
 };
 #endif
